@@ -20,6 +20,7 @@ const features = [
     description: (
       <>Don't worry about setting up a database. Use a Google Sheets for rapid prototyping.</>
     ),
+    href: '/docs/guides/examples',
   },
   {
     title: <>Custom forms</>,
@@ -27,19 +28,21 @@ const features = [
     description: (
       <>Put a custom form on your website and collect leads and responses in Google Sheets.</>
     ),
+    href: '/docs/guides/examples',
   },
   {
     title: <>Mobile development</>,
     imageUrl: 'img/use-mobile.png',
     description: <>Deploy a mobile app without deploying any other backend infrastructure.</>,
+    href: '/docs/guides/examples',
   },
 ]
 
-function Feature({ imageUrl, title, description }) {
+function Feature({ imageUrl, title, description, href }) {
   const imgUrl = useBaseUrl(imageUrl)
   return (
     <div className={classnames('col', styles.feature)}>
-      <a className={classnames('card', styles.featureCard)} href="#">
+      <a className={classnames('card', styles.featureCard)} href={href}>
         <div className="card__body">
           {imgUrl && (
             <div className="">
@@ -56,23 +59,23 @@ function Feature({ imageUrl, title, description }) {
 function HowCard({ title, heading, description }) {
   return (
     <div className={classnames('col', styles.howCard)}>
-        <div className="">
-          <h3>{title}</h3>
-          <h4>{heading}</h4>
-          <p>{description}</p>
-        </div>
+      <div className="">
+        <h3>{title}</h3>
+        <h4>{heading}</h4>
+        <p>{description}</p>
+      </div>
     </div>
   )
 }
-function PricingCard({ title, description }) {
+function PricingCard({ title, description, href }) {
   return (
     <div className={classnames('col', styles.pricingCard)}>
-        <div className="card">
+      <a className="card" href={href}>
         <div className="card__body text--center">
           <h3>{title}</h3>
           <p>{description}</p>
         </div>
-        </div>
+      </a>
     </div>
   )
 }
@@ -170,6 +173,7 @@ function Home() {
                     <p>Unlimited API Calls</p>
                   </>
                 }
+                href={'/docs/guides/examples'}
               />
               <PricingCard
                 title="Free"
@@ -179,6 +183,7 @@ function Home() {
                     <p>Unlimited API Calls</p>
                   </>
                 }
+                href={'/docs/guides/examples'}
               />
               <PricingCard
                 title="$5/month"
@@ -188,6 +193,7 @@ function Home() {
                     <p>Unlimited API Calls</p>
                   </>
                 }
+                href={'/docs/guides/examples'}
               />
             </div>
           </div>

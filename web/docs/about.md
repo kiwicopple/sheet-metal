@@ -5,7 +5,7 @@ title: About
 
 ## What it is
 
-Sheet Metal is useful if you want to use Google Sheets as a drop-in replacement for a database, without having to deploy your own server to communicate with it. SheetMetal connects to any Google Sheet via OAuth and provides an easy-to-use Restful API.
+Sheet Metal is useful if you want to use Google Sheets as a drop-in replacement for a database, without having to deploy your own server to communicate with it. Sheet Metal connects to any Google Sheet via OAuth and provides an easy-to-use Restful API.
 
 ## What it isn't
 
@@ -14,12 +14,14 @@ Sheet Metal aims to be small and easy to get started. Sheet Metal doesn't provid
 ## Features
 
 - Simple and unbloated
-- 
+- Good documentation
+- Does one thing and does it well
+- Opensource
 
 ## Benefits
 
 - Build a backend without any servers
-- Google Sheets is an interface for maniplulating your data
+- Use Google Sheets as an interface for editing your data
 - Get up and running in less than 1 minute
 
 

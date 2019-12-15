@@ -37,7 +37,7 @@
   --ifm-background-color: var(--custom-background-color);
   --ifm-sidebar-background: var(--custom-background-color);
   --ifm-color-content-secondary: var(--custom-content-color-light);
-  --ifm-code-background: var(--custom-background-color-highlight);
+  --ifm-code-background: var(--custom-background-color-diff);
 
 
   /* Primary */
@@ -144,6 +144,9 @@
   --custom-shadow-md: 0 3px 5px 0px rgba(0, 0, 0, 0.1);
   --custom-shadow-tl: 0 12px 28px 0 rgba(0, 0, 0, 0.2), 0 2px 4px 0 rgba(0, 0, 0, 0.1);
   --custom-shadow-xl: 0 30px 60px 0 rgba(0, 0, 0, 0.1);
+
+  /* This needs more work */
+  --custom-primary: #24b47e;
 }
 
 
@@ -182,6 +185,10 @@
   background: var(--custom-background-color-highlight) !important;
 }
 
+img.navbar__logo path {
+  fill: red !important;
+}
+
 .docusaurus-highlight-code-line {
   background-color: rgb(72, 77, 91);
   display: block;
@@ -209,22 +216,6 @@ body {
 li + li {
   margin-top: 0;
 }
-
-/* h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-.button,
-.hero__subtitle,
-a.navbar__item,
-ul.menu__list .title,
-.title,
-ul.contents a.contents__link {
-  font-family: var(--ifm-heading-font-family);
-  font-weight: bold;
-} */
 
 .button--lg {
   text-transform: uppercase;
@@ -254,7 +245,7 @@ article header {
 }
 
 .hero.is--dark {
-  background-color: var(--custom-background-color-highlight);
+  background-color: var(--custom-background-color-diff);
 }
 
 /* Sidebar */

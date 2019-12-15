@@ -12,10 +12,12 @@ Use a `POST` request to create a new row in your Google Sheet.
 curl "https://sheetmetal.io/api/v1/YOUR_METAL_KEY/TAB" \
   -X POST \
   -H "Content-Type: application/json" \
-  -d '[
-    { "COLUMN_1": "VALUE_1", "COLUMN_2": "VALUE_2" },
-    { "COLUMN_1": "VALUE_3", "COLUMN_2": "VALUE_4" }
-  ]'
+  -d '{
+    rows: [
+      { "COLUMN_1": "VALUE_1", "COLUMN_2": "VALUE_2" },
+      { "COLUMN_1": "VALUE_3", "COLUMN_2": "VALUE_4" }
+    ]
+  }'
 ```
 
 This will create 2 rows in `TAB`.
@@ -28,7 +30,9 @@ Add a single row to sheet named "Employees". Note that the endpoint always expec
 curl "https://sheetmetal.io/api/v1/YOUR_METAL_KEY/Employees" \
   -X POST \
   -H "Content-Type: application/json" \
-  -d '[{ "id": "1", "name": "Erlich Bachman", "gender": "male" }]'
+  -d '{
+    rows: [{ "id": "1", "name": "Erlich Bachman", "gender": "male" }]
+  }'
 ```
 
 Add multiple rows to sheet named "Employees":
@@ -37,10 +41,12 @@ Add multiple rows to sheet named "Employees":
 curl "https://sheetmetal.io/api/v1/YOUR_METAL_KEY/Employees" \
   -X POST \
   -H "Content-Type: application/json" \
-  -d '[
-    { "id": "1", "name": "Erlich Bachman", "gender": "male" },
-    { "id": "2", "name": "Jian Yang", "gender": "not hotdog" }
-  ]'
+  -d '{
+    rows: [
+      { "id": "1", "name": "Erlich Bachman", "gender": "male" },
+      { "id": "2", "name": "Jian Yang", "gender": "not hotdog" }
+    ]
+  }'
 ```
 
 
@@ -54,7 +60,18 @@ curl "https://sheetmetal.io/api/v1/YOUR_METAL_KEY/Employees" \
 
 #### 201: Created
 
-The rows were created.
+The rows that were created and the location range.
+
+```json
+{
+  "values": [
+    { "id": "5", "name": "Jared Dunn", "gender": "male" },
+    { "id": "6", "name": "Jian Yang", "gender": "not hotdog" }
+  ]
+}
+```
+
+We do not return the cell range in the sheet, as this data may be incorrect if another client subsequently updates the sheet (for example, deleting a row).
 
 #### 401: Unauthorized
 

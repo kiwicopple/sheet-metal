@@ -8,12 +8,9 @@ Use a `DELETE` request to remove rows from your sheet.
 ## The basics
 
 ```bash
-curl "https://sheetmetal.io/api/v1/YOUR_METAL_KEY/TAB" \
+curl "https://sheetmetal.io/api/v1/YOUR_METAL_KEY/TAB?criteria=COLUMN_NAME.eq.COLUMN_VALUE" \
   -X DELETE
-  -H "Content-Type: application/json" \
-  -d '{
-    "criteria: ["COLUMN_NAME=eq.COLUMN_VALUE"]
-  }'
+  -H "Content-Type: application/json"
 ```
 
 This will delete all rows in `TAB` where `COLUMN_NAME == COLUMN_VALUE`.
@@ -23,23 +20,17 @@ This will delete all rows in `TAB` where `COLUMN_NAME == COLUMN_VALUE`.
 DELETE all rows from sheet "Employees" where "id" is "1":
 
 ```bash
-curl "https://sheetmetal.io/api/v1/YOUR_METAL_KEY/Employees" \
+curl "https://sheetmetal.io/api/v1/YOUR_METAL_KEY/Employees?criteria=id.eq.1" \
   -X DELETE
-  -H "Content-Type: application/json" \
-  -d '{
-    "criteria: ["id=eq.1"]
-  }'
+  -H "Content-Type: application/json"
 ```
 
-Delete all rows from sheet "Employees" where column "name" is "Erlich Bachman" and column "status" is "TERMINATED":
+Delete all rows from sheet "Employees" where column "gender" is "male" and column "status" is "terminated":
 
 ```bash
-curl "https://sheetmetal.io/api/v1/YOUR_METAL_KEY/Employees" \
+curl "https://sheetmetal.io/api/v1/YOUR_METAL_KEY/Employees?criteria=gender.eq.male+status.eq.terminated" \
   -X DELETE \
-  -H "Content-Type: application/json" \
-  -d '{
-    "criteria": ["name=eq.Erlich Bachman", "status=eq.TERMINATED" ]
-  }'
+  -H "Content-Type: application/json"
 ```
 
 ## Options

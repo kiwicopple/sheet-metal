@@ -27,30 +27,26 @@ Read first two rows from the "Employees" tab:
 
 ```bash
 curl \
-  https://sheetmetal.io/api/v1/YOUR_METAL_KEY/Employees \
-  -H "limit: 2"
+  https://sheetmetal.io/api/v1/YOUR_METAL_KEY/Employees?limit=2
 ```
 
 Read the third row from sheet "Employees":
 
 ```bash
 curl \
-  https://sheetmetal.io/api/v1/YOUR_METAL_KEY/Employees \
-  -H "limit: 1" \
-  -H "offset: 2"
+  https://sheetmetal.io/api/v1/YOUR_METAL_KEY/Employees?limit=1&offset=2
 ```
 
 Get all "Employees" who are male and still employed:
 
 ```bash
 curl \
-  https://sheetmetal.io/api/v1/YOUR_METAL_KEY/Employees \
-  -H 'criteria: [ "status=eq.EMPLOYED", "gender=eq.MALE" ]'
+  https://sheetmetal.io/api/v1/YOUR_METAL_KEY/Employees?criteria=status.eq.employed+gender.eq.male
 ```
 
 ## Options
 
-All options are passed as headers
+All options are passed as query parameters
 
 | Parameter | Default | Description                                 |
 | --------- | ------- | ------------------------------------------- |
@@ -66,7 +62,6 @@ An array of objects. Each object is a row from the Google Spreadsheet. For examp
 
 ```json
 {
-  "range": "Sheet1!A1:Z1000",
   "values": [
     { "id": "1", "name": "Erlich Bachman", "gender": "male" },
     { "id": "2", "name": "Richard Hendricks", "gender": "male" },
@@ -77,6 +72,10 @@ An array of objects. Each object is a row from the Google Spreadsheet. For examp
   ]
 }
 ```
+
+The `values` data will ALWAYS be an array, even if you request with `limit=1`.
+
+We do not return the cell range in the sheet, as this data may be incorrect if another client subsequently updates the sheet (for example, deleting a row).
 
 #### 401: Unauthorized
 

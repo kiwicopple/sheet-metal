@@ -10,17 +10,17 @@ module.exports = {
   tagline: 'Turn any Google Sheet into a database.',
   url: 'https://sheetmetal.io',
   baseUrl: '/',
-  favicon: '/favicon.ico',
+  favicon: '/static/favicon.ico',
   organizationName: 'kiwicopple', // Usually your GitHub org/user name.
   projectName: 'sheet-metal', // Usually your repo name.
   themeConfig: {
+    darkMode: true,
     navbar: {
       classNames: 'shadow--md',
       title: '',
       logo: {
         alt: 'Sheet Metal',
-        src: '/img/logo.png',
-        darkSrc: '/img/logo-dark.png',
+        src: '/img/logo.svg'
       },
       links: [
         { to: '/docs/about', label: 'Docs', position: 'right' },

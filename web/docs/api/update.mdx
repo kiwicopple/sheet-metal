@@ -11,7 +11,7 @@ Then you need to pass JSON object with new values. Updates only rows where {colu
 ## The basics
 
 ```bash
-curl "https://sheetmetal.io/api/v1/YOUR_METAL_KEY/TAB/COLUMN_NAME/COLUMN_VALUE" \
+curl "https://sheetmetal.io/api/v1/YOUR_METAL_KEY/TAB?criteria=COLUMN_NAME.eq.COLUMN_VALUE" \
   -X PATCH \
   -H "Content-Type: application/json" \
   -d '{
@@ -28,19 +28,25 @@ it will update the columns `SOME_COLUMN_NAME` and `NEW_VALUE`.
 Update all rows from sheet "Employees" where value of "gender" is male", and set the gender to 'not hotdog':
 
 ```bash
-curl "https://sheetmetal.io/api/v1/YOUR_METAL_KEY/Employees/gender/male" \
+curl "https://sheetmetal.io/api/v1/YOUR_METAL_KEY/Employees?criteria=gender.eq.male" \
   -X PATCH \
   -H "Content-Type: application/json" \
-  -d '{ "gender": "not hotdog" }'
+  -d '{ 
+    "gender": "not hotdog" 
+  }'
 ```
 
 Update all rows from sheet "Employees" where value of "id" is "1", and update the name, gender, and status:
 
 ```bash
-curl "https://sheetmetal.io/api/v1/YOUR_METAL_KEY/Employees/id/1" \
+curl "https://sheetmetal.io/api/v1/YOUR_METAL_KEY/Employees?criteria=id.eq.1" \
   -X PATCH \
   -H "Content-Type: application/json" \
-  -d '{ "name": "Erlich Bachman", "gender": "male", "status": "terminated" }'
+  -d '{ 
+    "name": "Erlich Bachman", 
+    "gender": "male", 
+    "status": "terminated" 
+  }'
 ```
 
 
@@ -52,7 +58,18 @@ curl "https://sheetmetal.io/api/v1/YOUR_METAL_KEY/Employees/id/1" \
 
 #### 200: Success
 
-The rows were updated.
+The rows that were updated and the location range 
+
+```json
+{
+  "values": [
+    { "id": "5", "name": "Jared Dunn", "gender": "male" },
+    { "id": "6", "name": "Jian Yang", "gender": "not hotdog" }
+  ]
+}
+```
+
+We do not return the cell range in the sheet, as this data may be incorrect if another client subsequently updates the sheet (for example, deleting a row).
 
 #### 401: Unauthorized
 
