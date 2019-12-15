@@ -1,0 +1,66 @@
+---
+id: api-create
+title: 'POST: Create new rows'
+---
+
+
+Use a `POST` request to create a new row in your Google Sheet.
+
+## The basics
+
+```bash
+curl "https://sheetmetal.io/api/v1/YOUR_METAL_KEY/TAB" \
+  -X POST \
+  -H "Content-Type: application/json" \
+  -d '[
+    { "COLUMN_1": "VALUE_1", "COLUMN_2": "VALUE_2" },
+    { "COLUMN_1": "VALUE_3", "COLUMN_2": "VALUE_4" }
+  ]'
+```
+
+This will create 2 rows in `TAB`.
+
+## Examples
+
+Add a single row to sheet named "Employees". Note that the endpoint always expects an array.
+
+```bash
+curl "https://sheetmetal.io/api/v1/YOUR_METAL_KEY/Employees" \
+  -X POST \
+  -H "Content-Type: application/json" \
+  -d '[{ "id": "1", "name": "Erlich Bachman", "gender": "male" }]'
+```
+
+Add multiple rows to sheet named "Employees":
+
+```bash
+curl "https://sheetmetal.io/api/v1/YOUR_METAL_KEY/Employees" \
+  -X POST \
+  -H "Content-Type: application/json" \
+  -d '[
+    { "id": "1", "name": "Erlich Bachman", "gender": "male" },
+    { "id": "2", "name": "Jian Yang", "gender": "not hotdog" }
+  ]'
+```
+
+
+
+## Options
+
+@todo
+
+
+## Returns
+
+#### 201: Created
+
+The rows were created.
+
+#### 401: Unauthorized
+
+The metal key was invalid.
+
+#### 404: Not found
+
+The tab you were looking for was not found.
+

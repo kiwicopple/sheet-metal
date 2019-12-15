@@ -1,0 +1,89 @@
+---
+id: api-read
+title: 'GET: Read your sheet data'
+---
+
+Use a `GET` request to read data from your Google Sheet.
+
+## The basics
+
+```bash
+curl \
+  https://sheetmetal.io/api/v1/YOUR_METAL_KEY/TAB
+```
+
+This will get all rows in `TAB`
+
+## Examples
+
+Get all rows from "Employees":
+
+```bash
+curl \
+  https://sheetmetal.io/api/v1/YOUR_METAL_KEY/Employees
+```
+
+Read first two rows from the "Employees" tab:
+
+```bash
+curl \
+  https://sheetmetal.io/api/v1/YOUR_METAL_KEY/Employees \
+  -H "limit: 2"
+```
+
+Read the third row from sheet "Employees":
+
+```bash
+curl \
+  https://sheetmetal.io/api/v1/YOUR_METAL_KEY/Employees \
+  -H "limit: 1" \
+  -H "offset: 2"
+```
+
+Get all "Employees" who are male and still employed:
+
+```bash
+curl \
+  https://sheetmetal.io/api/v1/YOUR_METAL_KEY/Employees \
+  -H 'criteria: [ "status=eq.EMPLOYED", "gender=eq.MALE" ]'
+```
+
+## Options
+
+All options are passed as headers
+
+| Parameter | Default | Description                                 |
+| --------- | ------- | ------------------------------------------- |
+| limit     |         | Number of how many rows should be returned  |
+| offset    | 0       | Number from which row response should start |
+| criteria  |         | @todo                                       |
+
+## Returns
+
+#### 200: Success
+
+An array of objects. Each object is a row from the Google Spreadsheet. For example:
+
+```json
+{
+  "range": "Sheet1!A1:Z1000",
+  "values": [
+    { "id": "1", "name": "Erlich Bachman", "gender": "male" },
+    { "id": "2", "name": "Richard Hendricks", "gender": "male" },
+    { "id": "3", "name": "Dinesh Chugtai", "gender": "male" },
+    { "id": "4", "name": "Bertram Gilfoyle", "gender": "male" },
+    { "id": "5", "name": "Jared Dunn", "gender": "male" },
+    { "id": "6", "name": "Jian Yang", "gender": "not hotdog" }
+  ]
+}
+```
+
+#### 401: Unauthorized
+
+The metal key was invalid.
+
+#### 404: Not found
+
+The tab you were looking for was not found.
+
+

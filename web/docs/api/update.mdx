@@ -1,0 +1,64 @@
+---
+id: api-update
+title: 'PATCH: Update rows'
+---
+
+Use a `PATCH` request to update rows in your Google Sheet.
+
+To identify the row(s) you want to update you need to add /{column_name}/{value} to the API URL.
+Then you need to pass JSON object with new values. Updates only rows where {column_name} match {value}.
+
+## The basics
+
+```bash
+curl "https://sheetmetal.io/api/v1/YOUR_METAL_KEY/TAB/COLUMN_NAME/COLUMN_VALUE" \
+  -X PATCH \
+  -H "Content-Type: application/json" \
+  -d '{
+    "SOME_COLUMN_NAME": "NEW_VALUE",
+    "OTHER_COLUMN_NAME": "NEW_VALUE",
+  }'
+```
+
+This will update all data in `TAB` where `COLUMN_NAME == COLUMN_VALUE`. For every row that matches the criteria,
+it will update the columns `SOME_COLUMN_NAME` and `NEW_VALUE`.
+
+## Examples
+
+Update all rows from sheet "Employees" where value of "gender" is male", and set the gender to 'not hotdog':
+
+```bash
+curl "https://sheetmetal.io/api/v1/YOUR_METAL_KEY/Employees/gender/male" \
+  -X PATCH \
+  -H "Content-Type: application/json" \
+  -d '{ "gender": "not hotdog" }'
+```
+
+Update all rows from sheet "Employees" where value of "id" is "1", and update the name, gender, and status:
+
+```bash
+curl "https://sheetmetal.io/api/v1/YOUR_METAL_KEY/Employees/id/1" \
+  -X PATCH \
+  -H "Content-Type: application/json" \
+  -d '{ "name": "Erlich Bachman", "gender": "male", "status": "terminated" }'
+```
+
+
+## Options
+
+@todo
+
+## Returns
+
+#### 200: Success
+
+The rows were updated.
+
+#### 401: Unauthorized
+
+The metal key was invalid.
+
+#### 404: Not found
+
+The tab you were looking for was not found.
+

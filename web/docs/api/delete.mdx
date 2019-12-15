@@ -1,0 +1,62 @@
+---
+id: api-delete
+title: 'DELETE: Remove rows'
+---
+
+Use a `DELETE` request to remove rows from your sheet.
+
+## The basics
+
+```bash
+curl "https://sheetmetal.io/api/v1/YOUR_METAL_KEY/TAB" \
+  -X DELETE
+  -H "Content-Type: application/json" \
+  -d '{
+    "criteria: ["COLUMN_NAME=eq.COLUMN_VALUE"]
+  }'
+```
+
+This will delete all rows in `TAB` where `COLUMN_NAME == COLUMN_VALUE`.
+
+## Examples
+
+DELETE all rows from sheet "Employees" where "id" is "1":
+
+```bash
+curl "https://sheetmetal.io/api/v1/YOUR_METAL_KEY/Employees" \
+  -X DELETE
+  -H "Content-Type: application/json" \
+  -d '{
+    "criteria: ["id=eq.1"]
+  }'
+```
+
+Delete all rows from sheet "Employees" where column "name" is "Erlich Bachman" and column "status" is "TERMINATED":
+
+```bash
+curl "https://sheetmetal.io/api/v1/YOUR_METAL_KEY/Employees" \
+  -X DELETE \
+  -H "Content-Type: application/json" \
+  -d '{
+    "criteria": ["name=eq.Erlich Bachman", "status=eq.TERMINATED" ]
+  }'
+```
+
+## Options
+
+@todo
+
+## Returns
+
+#### 200: Success
+
+The rows were deleted.
+
+#### 401: Unauthorized
+
+The metal key was invalid.
+
+#### 404: Not found
+
+The tab you were looking for was not found.
+
