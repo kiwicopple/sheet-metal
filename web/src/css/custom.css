@@ -162,16 +162,16 @@
   --custom-shadow-tl: 0 12px 28px 0 rgba(0, 0, 0, 0.2), 0 2px 4px 0 rgba(0, 0, 0, 0.1);
   --custom-shadow-xl: 0 30px 60px 0 rgba(0, 0, 0, 0.5);
 
-  --ifm-color-gray-100: rgba(224, 235, 247, calc(1 - 0.1));
-  --ifm-color-gray-150: rgba(224, 235, 247, calc(1 - 0.15));
-  --ifm-color-gray-200: rgba(224, 235, 247, calc(1 - 0.2));
-  --ifm-color-gray-300: rgba(224, 235, 247, calc(1 - 0.2.5));
-  --ifm-color-gray-400: rgba(224, 235, 247, calc(1 - 0.3));
-  --ifm-color-gray-500: rgba(224, 235, 247, calc(1 - 0.3.5));
-  --ifm-color-gray-600: rgba(224, 235, 247, calc(1 - 0.4));
-  --ifm-color-gray-700: rgba(224, 235, 247, calc(1 - 0.4.5));
-  --ifm-color-gray-800: rgba(224, 235, 247, calc(1 - 0.5));
-  --ifm-color-gray-900: rgba(224, 235, 247, calc(1 - 0.5.5));
+  --ifm-color-gray-100: rgba(224, 235, 247, 0.9);
+  --ifm-color-gray-150: rgba(224, 235, 247, 0.85);
+  --ifm-color-gray-200: rgba(224, 235, 247, 0.8);
+  --ifm-color-gray-300: rgba(224, 235, 247, 0.75);
+  --ifm-color-gray-400: rgba(224, 235, 247, 0.7);
+  --ifm-color-gray-500: rgba(224, 235, 247, 0.65);
+  --ifm-color-gray-600: rgba(224, 235, 247, 0.6);
+  --ifm-color-gray-700: rgba(224, 235, 247, 0.55);
+  --ifm-color-gray-800: rgba(224, 235, 247, 0.5);
+  --ifm-color-gray-900: rgba(224, 235, 247, 0.45);
   --ifm-color-secondary-darker: #000;
   --ifm-color-secondary-dark: #1f1f1f;
   --ifm-color-secondary: #2a2a2a;
