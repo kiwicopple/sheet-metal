@@ -1,0 +1,41 @@
+.FooterComponent {
+  &__container {
+    .menu-label {
+      font-size: 1.275rem;
+      font-weight: 600;
+      text-transform: none;
+      letter-spacing: 0;
+      color: inherit;
+      &.menu-label:not(:last-child) {
+        margin-bottom: 0.6rem;
+      }
+    }
+
+    .menu-list {
+      margin-left: -0.75rem;
+      //font-size: 1.1em;
+      img {
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: 0.8rem;
+      }
+      // Slightly transparent hover background
+      // makes it look good on any section background.
+      a:hover {
+        background-color: rgba(0, 0, 0, 0.05);
+      }
+    }
+  }
+
+  &__logo {
+    width: 130px;
+  }
+
+  &__description {
+    margin-top: 1rem;
+  }
+
+  &__copywrite {
+    margin-top: 1rem;
+  }
+}
