@@ -84,20 +84,7 @@ module.exports = {
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
-        },
-        cssnano: {
-          calc: false,
-        },
-      },
-      {
-        cssnano: {
-          preset: [
-            'default',
-            {
-              calc: false,
-            },
-          ],
-        },
+        }
       },
     ],
   ],
