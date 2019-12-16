@@ -20,7 +20,7 @@ module.exports = {
       title: '',
       logo: {
         alt: 'Sheet Metal',
-        src: '/img/logo.svg'
+        src: '/img/logo.svg',
       },
       links: [
         { to: '/docs/about', label: 'Docs', position: 'right' },
@@ -35,7 +35,7 @@ module.exports = {
     prism: {
       defaultLanguage: 'bash',
       // https://github.com/FormidableLabs/prism-react-renderer/tree/master/src/themes
-      // theme: require('prism-react-renderer/themes/vsdark'),
+      theme: require('prism-react-renderer/themes/vsdark'),
     },
     footer: {
       // links: [
@@ -84,6 +84,19 @@ module.exports = {
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
+        },
+        cssnano: {
+          calc: false,
+        },
+      },
+      {
+        cssnano: {
+          preset: [
+            'default',
+            {
+              calc: false,
+            },
+          ],
         },
       },
     ],
