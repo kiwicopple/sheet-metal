@@ -1,10 +1,7 @@
 {
-  "name": "flock",
+  "name": "sheet-metal-app",
   "version": "0.1.0",
   "private": true,
-  "keywords": [
-    "flock"
-  ],
   "scripts": {
     "dev": "next",
     "build": "next build",

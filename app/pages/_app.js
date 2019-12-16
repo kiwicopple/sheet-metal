@@ -28,12 +28,9 @@ class MyApp extends App {
       <ProvideAuth>
         <>
           <Head>
-            <title>Flock. One API to rule them all.</title>
+            <title>Sheet Metal. Turn any Google Sheet into a database.</title>
             <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-            <link
-              href="https://fonts.googleapis.com/css?family=Rajdhani:400,500,600,700&display=swap"
-              rel="stylesheet"
-            />
+            <link href="https://rsms.me/inter/inter.css" rel="stylesheet" />
           </Head>
           <Navbar color="primary" spaced={true} logo="/logo-white.svg" />
 
@@ -45,8 +42,8 @@ class MyApp extends App {
             size="medium"
             backgroundImage=""
             backgroundImageOpacity={1}
-            description="Flock is an API on top of multiple notification services to overcome repetitive building and platform idiosyncrasies."
-            copyright="© 2019 Flock"
+            description="Sheet Metal lets you read and update any Google spreadsheet using a RESTful API."
+            copyright="© 2019 kiwicopple"
             logo="/logo.svg"
           />
         </>

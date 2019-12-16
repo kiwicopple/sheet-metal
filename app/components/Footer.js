@@ -30,7 +30,7 @@ function Footer(props) {
           </div>
           <div className="column is-7 is-6-widescreen is-offset-2-widescreen">
             <div className="columns">
-              <div className="column is-4">
+              {/* <div className="column is-4">
                 <div className="menu">
                   <p className="menu-label">Product</p>
                   <ul className="menu-list">
@@ -46,7 +46,7 @@ function Footer(props) {
                     </li>
                   </ul>
                 </div>
-              </div>
+              </div> */}
               {/* <div className="column is-4">
                 <div className="menu">
                   <p className="menu-label">Company</p>
