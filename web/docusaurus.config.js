@@ -35,7 +35,7 @@ module.exports = {
     prism: {
       defaultLanguage: 'bash',
       // https://github.com/FormidableLabs/prism-react-renderer/tree/master/src/themes
-      theme: require('prism-react-renderer/themes/vsdark'),
+      // theme: require('prism-react-renderer/themes/vsdark'),
     },
     footer: {
       // links: [
