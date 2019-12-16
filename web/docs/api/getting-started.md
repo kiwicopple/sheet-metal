@@ -9,7 +9,7 @@ For the data to function like database, there is about 2 minutes of setup requir
 
 @todo
 
-## Connecting your sheet to SheetMetal
+## Connecting your sheet to Sheet Metal
 
 @todo
 

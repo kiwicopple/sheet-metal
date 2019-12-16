@@ -73,7 +73,7 @@ function PricingCard({ title, description, href }) {
       <a className="card" href={href}>
         <div className="card__body text--center">
           <h3>{title}</h3>
-          <p>{description}</p>
+          <>{description}</>
         </div>
       </a>
     </div>
