@@ -4,6 +4,7 @@ import { useRouter } from 'next/router'
 import { get } from 'lodash'
 import Section from '../components/Section'
 import Link from 'next/link'
+import DashboardNav from '../components/Dashboard/DashboardNav'
 
 function DashboardPage(props) {
   const auth = useAuth()
@@ -20,10 +21,11 @@ function DashboardPage(props) {
 
   return (
     <Section>
+      <DashboardNav />
       <div className="container">
         <div className="level is-mobile">
           <div className="level-left">
-            <h2 className="title is-3">Projects</h2>
+            <h2 className="title is-3">Your Sheets</h2>
           </div>
           <div className="level-right">
             <h2 className="title is-3">
@@ -36,23 +38,17 @@ function DashboardPage(props) {
           </div>
         </div>
 
-        <Link href="/teams/id">
-          <a className="box">
+          <a className="box" href="#">
             <article className="media">
-              <figure className="media-left">
-                <p className="image is-64x64">
-                  <img src="https://bulma.io/images/placeholders/128x128.png" />
-                </p>
-              </figure>
               <div className="media-content">
                 <div className="content">
-                  <p className="heading">project-id</p>
-                  <p className="subtitle">Project Name</p>
+                  <p className="heading">sheet name</p>
+                  <p className="">Project Name</p>
                 </div>
               </div>
             </article>
           </a>
-        </Link>
+          
       </div>
     </Section>
   )

@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import NavbarContainer from './NavbarContainer'
 import Link from 'next/link'
 import { useAuth } from './../util/auth.js'
 
@@ -8,7 +7,11 @@ function Navbar(props) {
   const [menuOpen, setMenuOpen] = useState(false)
 
   return (
-    <NavbarContainer color={props.color}>
+    <nav
+      className={
+        'navbar' + (props.color ? ` is-${props.color}` : '') + (props.spaced ? ' is-spaced' : '')
+      }
+    >
       <div className="container">
         <div className="navbar-brand">
           <div className="navbar-item">
@@ -29,30 +32,18 @@ function Navbar(props) {
         </div>
         <div className={'navbar-menu' + (menuOpen ? ' is-active' : '')}>
           <div className="navbar-end">
+            <a className="navbar-item" href="https://sheetmetal.io/docs/">
+              Docs
+            </a>
             {auth.user && (
-              <div className="navbar-item has-dropdown is-hoverable ">
-                <Link href="/">
-                  <a className="navbar-link">Account</a>
+              <>
+                <Link href="/dashboard">
+                  <a className="navbar-item">Dashboard</a>
                 </Link>
-
-                <div className="navbar-dropdown is-boxed is-right">
-                  <Link href="/dashboard">
-                    <a className="navbar-item">Dashboard</a>
-                  </Link>
-
-                  <Link href="/signout">
-                    <a
-                      className="navbar-item"
-                      onClick={e => {
-                        e.preventDefault()
-                        auth.signout()
-                      }}
-                    >
-                      Sign out
-                    </a>
-                  </Link>
-                </div>
-              </div>
+                <Link href="/account">
+                  <a className="navbar-item">Account</a>
+                </Link>
+              </>
             )}
 
             {!auth.user && (
@@ -63,7 +54,7 @@ function Navbar(props) {
           </div>
         </div>
       </div>
-    </NavbarContainer>
+    </nav>
   )
 }
 

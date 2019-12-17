@@ -31,8 +31,9 @@ class MyApp extends App {
             <title>Sheet Metal. Turn any Google Sheet into a database.</title>
             <meta name="viewport" content="initial-scale=1.0, width=device-width" />
             <link href="https://rsms.me/inter/inter.css" rel="stylesheet" />
+            <link rel="icon" href="favicon.ico" type="image/x-icon" />
           </Head>
-          <Navbar color="primary" spaced={true} logo="/logo-white.svg" />
+          <Navbar color="" spaced={false} logo="/img/logo.svg" />
 
           <Component {...pageProps} />
 
@@ -44,7 +45,7 @@ class MyApp extends App {
             backgroundImageOpacity={1}
             description="Sheet Metal lets you read and update any Google spreadsheet using a RESTful API."
             copyright="© 2019 kiwicopple"
-            logo="/logo.svg"
+            logo="/img/logo.svg"
           />
         </>
       </ProvideAuth>
