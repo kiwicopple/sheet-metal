@@ -5,6 +5,7 @@ import { get } from 'lodash'
 import Section from '../../components/Section'
 import Link from 'next/link'
 import DashboardNav from '../../components/Dashboard/DashboardNav.js'
+import ChangePass from './../../components/ChangePass'
 
 function AccountPage(props) {
   const auth = useAuth()
@@ -21,28 +22,38 @@ function AccountPage(props) {
 
   return (
     <Section>
-      <DashboardNav />
+      <DashboardNav active="account" />
       <div className="container">
         <div className="level is-mobile">
           <div className="level-left">
-            <h2 className="title is-3">Your Account</h2>
           </div>
           <div className="level-right">
-            
+            <Link href="/signout">
+              <a
+                className="button"
+                onClick={e => {
+                  e.preventDefault()
+                  auth.signout()
+                }}
+              >
+                Sign out
+              </a>
+            </Link>
           </div>
         </div>
 
-        <Link href="/signout">
-          <a
-            className="button"
-            onClick={e => {
-              e.preventDefault()
-              auth.signout()
-            }}
-          >
-            Sign out
-          </a>
-        </Link>
+        <>
+          <div className="container box">
+            <h4 className="title is-4">Change your password</h4>
+            <ChangePass buttonText={'Change Password'} parentColor={'white'} />
+          </div>
+        </>
+        <>
+          <div className="container box">
+            <h4 className="title is-4">Danger</h4>
+            Delete account
+          </div>
+        </>
       </div>
     </Section>
   )

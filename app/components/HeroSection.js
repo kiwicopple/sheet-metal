@@ -8,6 +8,7 @@ function HeroSection(props) {
     <Section
       color={props.color}
       size={props.size}
+      hero={true}
       backgroundImage={props.backgroundImage}
       backgroundImageOpacity={props.backgroundImageOpacity}
     >

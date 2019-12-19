@@ -6,6 +6,7 @@ function Section(props) {
   const {
     color,
     size,
+    hero,
     backgroundImage,
     backgroundImageOpacity,
     children,
@@ -16,22 +17,20 @@ function Section(props) {
   return (
     <section
       className={
-        "SectionComponent hero section is-block is-relative" +
-        (color ? ` is-${color}` : "") +
-        (size ? ` is-${size}` : "")
+        'SectionComponent section is-block is-relative' +
+        (hero ? ` hero` : '') +
+        (color ? ` is-${color}` : '') +
+        (size ? ` is-${size}` : '')
       }
       {...otherProps}
     >
       {backgroundImage && (
-        <BackgroundImage
-          image={backgroundImage}
-          opacity={backgroundImageOpacity}
-        />
+        <BackgroundImage image={backgroundImage} opacity={backgroundImageOpacity} />
       )}
 
       {props.children}
     </section>
-  );
+  )
 }
 
 export default Section;

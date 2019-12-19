@@ -21,11 +21,10 @@ function DashboardPage(props) {
 
   return (
     <Section>
-      <DashboardNav />
+      <DashboardNav active="sheets" />
       <div className="container">
         <div className="level is-mobile">
           <div className="level-left">
-            <h2 className="title is-3">Your Sheets</h2>
           </div>
           <div className="level-right">
             <h2 className="title is-3">
