@@ -144,7 +144,10 @@ function Home() {
                 title="2."
                 heading="Connect Sheet Metal"
                 description={
-                  <>Login to Sheet Metal in just 2 clicks to allow access to your Google Sheets.</>
+                  <>
+                    Grant access to your sheet in the Sheet Metal dashboard, and we will provide you
+                    with a secure and unique API key for each sheet.
+                  </>
                 }
               />
               <HowCard
