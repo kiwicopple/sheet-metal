@@ -1,25 +1,39 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { useAuth } from '~/util/auth.js'
-import { useRouter } from 'next/router'
-import { get } from 'lodash'
 import Section from '~/components/Section'
-import Link from 'next/link'
+import { useStore } from '~/util/storeProvider.js'
+import NewSheetModal from '~/components/Dashboard/NewSheetModal'
+import { values } from 'mobx'
 
-function Dashboard(props) {
+import { observer } from 'mobx-react'
+
+const Sheet = ({ sheet }) => {
+  const store = useStore()
+  return (
+    <a className="box" href="#">
+      <article className="media">
+        <div className="media-content">
+          <div className="content">
+            <p className="heading">sheet name</p>
+            <p className="">{sheet.sheetId}</p>
+            <button className="button" onClick={() => store.removeSheet(sheet.sheetId)}>
+              {sheet.sheetId}
+            </button>
+          </div>
+        </div>
+      </article>
+    </a>
+  )
+}
+
+const Dashboard = () => {
   const auth = useAuth()
-  const router = useRouter()
-  const userId = get(auth, 'user.id', null)
-
-  // Redirect to /signin
-  // if not signed in.
-  useEffect(() => {
-    if (auth.user === false) {
-      router.push('/signin')
-    }
-  }, [auth, router])
+  const store = useStore()
+  const { setNewSheetModalVisible, sheets } = store
 
   return (
     <>
+      <NewSheetModal />
       <Section>
         <div className="container">
           <div className="level is-mobile">
@@ -28,25 +42,16 @@ function Dashboard(props) {
             </div>
             <div className="level-right">
               <h2 className="title is-3">
-                <Link href="/projects/new">
-                  <a className="button is-primary" onClick={() => addSheet(userId)}>
-                    New
-                  </a>
-                </Link>
+                <a className="button is-primary" onClick={() => setNewSheetModalVisible(true)}>
+                  New
+                </a>
               </h2>
             </div>
           </div>
 
-          <a className="box" href="#">
-            <article className="media">
-              <div className="media-content">
-                <div className="content">
-                  <p className="heading">sheet name</p>
-                  <p className="">Project Name</p>
-                </div>
-              </div>
-            </article>
-          </a>
+          {values(sheets).map(x => (
+            <Sheet sheet={x} key={x.sheetId} />
+          ))}
         </div>
       </Section>
       <Section>
@@ -69,4 +74,4 @@ function Dashboard(props) {
   )
 }
 
-export default Dashboard
+export default observer(Dashboard)

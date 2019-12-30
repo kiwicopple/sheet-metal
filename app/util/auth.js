@@ -1,9 +1,8 @@
 import React, { useState, useEffect, useContext, createContext } from 'react'
-import queryString from 'query-string'
 import * as firebase from 'firebase/app'
 import 'firebase/auth'
 import 'firebase/firestore'
-import { SheetSchema } from '../interfaces'
+import { SheetSchema } from './interfaces'
 
 if (!firebase.apps.length) {
   // Replace with your own Firebase credentials
