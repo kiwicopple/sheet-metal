@@ -34,24 +34,21 @@ export const useAuth = () => {
 function useProvideAuth() {
   const [user, setUser] = useState(null)
 
-  const signin = (email, password) => {
-    return firebase
-      .auth()
-      .signInWithEmailAndPassword(email, password)
-      .then(response => {
-        setUser(response.user)
-        return response.user
-      })
-  }
-
-  const signup = (email, password) => {
-    return firebase
-      .auth()
-      .createUserWithEmailAndPassword(email, password)
-      .then(response => {
-        setUser(response.user)
-        return response.user
-      })
+  const signin = () => {
+    var provider = new firebase.auth.GoogleAuthProvider()
+    provider.addScope('profile')
+    provider.addScope('email')
+    provider.addScope('https://www.googleapis.com/auth/spreadsheets')
+    provider.addScope('https://www.googleapis.com/auth/drive')
+    return (
+      firebase
+        .auth()
+        .signInWithPopup(provider)
+        .then(response => {
+          setUser(response.user)
+          return response.user
+        })
+    )
   }
 
   const signout = () => {
@@ -63,26 +60,6 @@ function useProvideAuth() {
       })
   }
 
-  const sendPasswordResetEmail = email => {
-    return firebase
-      .auth()
-      .sendPasswordResetEmail(email)
-      .then(() => {
-        return true
-      })
-  }
-
-  const confirmPasswordReset = (password, code) => {
-    // Get code from query string object
-    const resetCode = code || getFromQueryString('oobCode')
-
-    return firebase
-      .auth()
-      .confirmPasswordReset(resetCode, password)
-      .then(() => {
-        return true
-      })
-  }
 
   // Subscribe to user on mount
   useEffect(() => {
@@ -101,15 +78,8 @@ function useProvideAuth() {
   return {
     user,
     signin,
-    signup,
     signout,
-    sendPasswordResetEmail,
-    confirmPasswordReset,
   }
-}
-
-const getFromQueryString = key => {
-  return queryString.parse(window.location.search)[key]
 }
 
 /**
@@ -123,4 +93,3 @@ export const addSheet = async team => {
     .add(value)
   return docRef.id
 }
-

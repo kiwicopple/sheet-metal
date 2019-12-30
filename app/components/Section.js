@@ -1,5 +1,4 @@
 import React from "react";
-import BackgroundImage from "./BackgroundImage";
 import "./Section.scss";
 
 function Section(props) {
@@ -24,10 +23,6 @@ function Section(props) {
       }
       {...otherProps}
     >
-      {backgroundImage && (
-        <BackgroundImage image={backgroundImage} opacity={backgroundImageOpacity} />
-      )}
-
       {props.children}
     </section>
   )

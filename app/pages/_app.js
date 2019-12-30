@@ -1,10 +1,8 @@
 import React from 'react'
 import Head from 'next/head'
 import Navbar from './../components/Navbar'
-import Divider from './../components/Divider'
 import Footer from './../components/Footer'
 import App from 'next/app'
-import './../util/analytics.js'
 import { ProvideAuth } from './../util/auth.js'
 import './../styles/global.scss'
 
@@ -37,7 +35,6 @@ class MyApp extends App {
 
           <Component {...pageProps} />
 
-          <Divider color="light" />
           <Footer
             color="white"
             size="medium"
