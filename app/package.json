@@ -16,7 +16,7 @@
     "bulma": "0.7.5",
     "dotenv": "^8.2.0",
     "firebase": "6.6.2",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "mobx": "^5.15.1",
     "mobx-react": "^6.1.4",
     "mobx-react-lite": "^1.5.2",
