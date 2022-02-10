@@ -23,7 +23,7 @@
     "mobx-state-tree": "^3.15.0",
     "next": "9.3.2",
     "next-compose-plugins": "^2.2.0",
-    "node-sass": "4.12.0",
+    "node-sass": "7.0.0",
     "query-string": "6.8.3",
     "react": "16.10.2",
     "react-dom": "16.10.2"
